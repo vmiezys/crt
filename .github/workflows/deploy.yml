@@ -5,11 +5,6 @@ on:
   push:
     branches: [main]
 
-permissions:
-  contents: read    # checkout
-  pages: write      # gh-pages branch
-  id-token: write   # OIDC for Pages
-
 jobs:
   build:
     runs-on: ubuntu-latest
