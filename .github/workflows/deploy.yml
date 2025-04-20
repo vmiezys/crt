@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+
+# ❶  Every push to main triggers the build
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read    # checkout
+  pages: write      # gh-pages branch
+  id-token: write   # OIDC for Pages
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ❷ Clone your code
+      - uses: actions/checkout@v4
+
+      # ❸ Install Node (choose the version you have locally)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # ❹ Install dependencies from package-lock.json
+      - name: Install packages
+        run: npm ci
+
+      # ❺ Build the static site → dist/
+      - name: Build
+        run: npm run build
+
+      # ❻ Publish dist/ to the gh-pages branch
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+
