@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Central‑Limit‑Theorem demo</title>
+  <link rel="stylesheet" href="/style.css" />
+  <!-- KaTeX for math -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.17.1/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.17.1/dist/katex.min.js"></script>
+</head>
+<body>
+  <h1>The Central Limit Theorem</h1>
+
+  <label>
+    Sample size n:
+    <input type="range" id="n" min="1" max="100" value="1" />
+    <span id="n‑label">1</span>
+  </label>
+
+  <svg id="hist" width="600" height="300"></svg>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
+
